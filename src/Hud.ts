@@ -8,6 +8,7 @@ class Hud extends Container {
     fpsTextBox: any;
     loader: any;
     parent: Stage;
+    elementSupport: any;
 
     /**
      * Hud Constructor
@@ -110,7 +111,7 @@ class Hud extends Container {
             textStyle: {
                 fontFamily: 'Arial',
                 fontSize: '18px',
-                align: 'left',
+                align: 'center',
                 fill: 'white'
             },
             anchor: {
@@ -125,41 +126,38 @@ class Hud extends Container {
 
         this[name + 'Container'] = new Container();
         const container = this[name + 'Container'];
-        container.position.set(options.position.x, options.position.y);
 
         let middleElementWidth = 0;
         //select 3 elements (image + text + image, image + image + image, image + image + text, etc)
         for (var i = 0; i < 3; i++) {
             let randomElement = this.randomInt(0, 1); //select random element text or sprite for each of them
 
+            let element;
+
             if (randomElement == 0) {
                 //select random sprites from the spritesheet
                 options.spriteName = ((this.randomInt(0, 1) == 1 ? 'dieWhite_border' : 'dieRed_border') + this.randomInt(1, 6) + '.png');
-                const sprite = new PIXI.Sprite(this.loader.resources[options.spritesheet].textures[options.spriteName]);
-
-                //some calculation about text and sprite position x in grid
-                middleElementWidth = i == 1 ? sprite.width : middleElementWidth;
-                let positionX = this.getPosition(i, (i == 2 ? middleElementWidth : sprite.width), options.textMargin);
-
-                sprite.position.set(positionX, 0);
-                sprite.anchor.set(0, options.anchor.y);
-                container.addChild(sprite);
+                element = new PIXI.Sprite(this.loader.resources[options.spritesheet].textures[options.spriteName]);
             } else {
                 //select random text values from the capital city of countries array
                 options.text = this.randomText();
                 this[name + 'TextBox'] = new Text(options.text, options.textStyle);
-                const textBox = this[name + 'TextBox'];
-
-                //some calculation about text and sprite position x in grid
-                middleElementWidth = i == 1 ? textBox.width : middleElementWidth;
-                let positionX = this.getPosition(i, (i == 2 ? middleElementWidth : textBox.width), options.textMargin);
-
-                textBox.position.set(positionX, 0);
-                textBox.anchor.set(0, options.anchor.y);
-                container.addChild(textBox);
+                element = this[name + 'TextBox'];
             }
+            middleElementWidth = i == 0 ? element.width : middleElementWidth;
+            let positionX = this.getPosition(i, middleElementWidth, element.width, options.textMargin);
+            element.position.set(positionX, 0);
+            element.anchor.set(options.anchor.x, options.anchor.y);
+            container.addChild(element);
+
         }
 
+
+        container.position.set(options.position.x, options.position.y);
+
+        // Remove previous element before adding a new one
+        this.removeChild(this.elementSupport);
+        this.elementSupport = container;
         this.addChild(container);
     }
 
@@ -170,14 +168,15 @@ class Hud extends Container {
      * otherwise if element is last in grid, it will calculate as to the second element.
      * @param margin number - Margin between texts or sprites
      */
-    getPosition(i, width, margin) {
+    getPosition(i, widthCentEl, widthEl, margin) {
         switch (i) {
             case 0:
-                return -1 * (width + margin);
-            case 1:
                 return 0;
+            case 1:
+                return -1 * ((widthCentEl + widthEl) / 2 + margin)
             case 2:
-                return (width + margin);
+                // return (3/2*width + margin);
+                return ((widthCentEl + widthEl) / 2 + margin);
             default:
                 break;
         }

@@ -317,7 +317,7 @@ class Stage extends Container {
     startTask2() {
         this.selectedTask = 2;
         this.randomContainerTimer = 0;
-        this.randomContainerDuration = 2 * 1000;
+        this.randomContainerDuration = (Math.random()+1) * 1000;
 
         if (this.hud.randomContainer)
             this.hud.randomContainer.removeChildren(0);
