@@ -2,7 +2,7 @@ import { Loader, autoDetectRenderer, utils } from 'pixi.js';
 import { noop as _noop } from 'lodash/util';
 import Stage from './Stage';
 
-const BACKGROUND_COLOR = 0x64b0ff;
+const BACKGROUND_COLOR = 0x865CFF;
 
 class Game {
     spritesheet: string;

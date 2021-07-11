@@ -2,6 +2,21 @@ import { Container, Point, Text, Loader } from 'pixi.js';
 import { assign as _extend } from 'lodash/object';
 import Stage from './Stage';
 
+const MAX_X = window.innerWidth;
+const MAX_Y = window.innerHeight;
+
+const HUD_POSITIONS = {
+    RIGHT_TOP_CORNER: new Point(MAX_X - 125, 20),
+    RIGHT_BOTTOM_CORNER: new Point(MAX_X - 10, MAX_Y - 20),
+    CENTER: new Point(MAX_X * 0.50, MAX_Y * 0.50),
+    CENTER_TOP: new Point(MAX_X * 0.50 - 200, 10),
+    TASK1_BUTTON: new Point(MAX_X * 0.50 - 125, MAX_Y * 0.35),
+    TASK2_BUTTON: new Point(MAX_X * 0.50 - 125, MAX_Y * 0.50),
+    TASK3_BUTTON: new Point(MAX_X * 0.50 - 125, MAX_Y * 0.65),
+    LEFT_TOP_CORNER: new Point(MAX_X * 0.01, 20),
+    LEFT_BOTTOM_CORNER: new Point(10, MAX_Y * 0.95)
+};
+
 class Hud extends Container {
     randomContainer: any;
     task1Container: any;
@@ -127,7 +142,7 @@ class Hud extends Container {
         this[name + 'Container'] = new Container();
         const container = this[name + 'Container'];
 
-        let middleElementWidth = 0;
+        let lastElementWidth = 0;
         //select 3 elements (image + text + image, image + image + image, image + image + text, etc)
         for (var i = 0; i < 3; i++) {
             let randomElement = this.randomInt(0, 1); //select random element text or sprite for each of them
@@ -144,42 +159,21 @@ class Hud extends Container {
                 this[name + 'TextBox'] = new Text(options.text, options.textStyle);
                 element = this[name + 'TextBox'];
             }
-            middleElementWidth = i == 0 ? element.width : middleElementWidth;
-            let positionX = this.getPosition(i, middleElementWidth, element.width, options.textMargin);
+            let positionX = lastElementWidth + options.textMargin;
+            lastElementWidth = positionX + element.width;
             element.position.set(positionX, 0);
-            element.anchor.set(options.anchor.x, options.anchor.y);
+            element.anchor.set(0, options.anchor.y);
             container.addChild(element);
 
         }
 
 
-        container.position.set(options.position.x, options.position.y);
+        container.position.set((MAX_X - lastElementWidth)/2, options.position.y);
 
         // Remove previous element before adding a new one
         this.removeChild(this.elementSupport);
         this.elementSupport = container;
         this.addChild(container);
-    }
-
-    /**
-     * getPosition for text and sprite position x calculation in grid
-     * @param i number - Number for index of element in grid
-     * @param width number - If element is first in grid, it will be left side of container center, 
-     * otherwise if element is last in grid, it will calculate as to the second element.
-     * @param margin number - Margin between texts or sprites
-     */
-    getPosition(i, widthCentEl, widthEl, margin) {
-        switch (i) {
-            case 0:
-                return 0;
-            case 1:
-                return -1 * ((widthCentEl + widthEl) / 2 + margin)
-            case 2:
-                // return (3/2*width + margin);
-                return ((widthCentEl + widthEl) / 2 + margin);
-            default:
-                break;
-        }
     }
 
     randomText() {

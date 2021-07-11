@@ -16,7 +16,7 @@ const HUD_POSITIONS = {
     RIGHT_TOP_CORNER: new Point(MAX_X - 125, 20),
     RIGHT_BOTTOM_CORNER: new Point(MAX_X - 10, MAX_Y - 20),
     CENTER: new Point(MAX_X * 0.50, MAX_Y * 0.50),
-    CENTER_TOP: new Point(MAX_X * 0.50 - 200, 10),
+    CENTER_TOP: new Point(MAX_X * 0.50, 10),
     TASK1_BUTTON: new Point(MAX_X * 0.50 - 125, MAX_Y * 0.35),
     TASK2_BUTTON: new Point(MAX_X * 0.50 - 125, MAX_Y * 0.50),
     TASK3_BUTTON: new Point(MAX_X * 0.50 - 125, MAX_Y * 0.65),
@@ -92,14 +92,17 @@ class Stage extends Container {
         this.hud.addText('welcome', {
             text: 'Pixi.js Typescript Tasks',
             textStyle: {
-                fontFamily: 'Arial',
-                fontSize: '18px',
+                fontFamily: "Courier New",
+                fontWeight: "bold",
+                stroke: "white",
+                strokeThickness: 1,
+                fontSize: '26px',
                 align: 'center',
-                fill: 'white'
+                fill: 'Black'
             },
             position: HUD_POSITIONS.CENTER_TOP,
             anchor: {
-                x: -0.5,
+                x: 0.5,
                 y: 0
             }
         });
@@ -147,12 +150,13 @@ class Stage extends Container {
                 y: 0
             },
             textStyle: {
-                fontFamily: 'Arial',
+                fontFamily: "Verdana, Geneva, sans-serif",
+                fontWeight: "bold",
                 fontSize: '25px',
                 align: 'left',
                 fill: 'white'
             },
-            textMargin: 0,
+            textMargin: 5,
             textAllignment: -1
         }, this.onBackToMenuButton);
     }
@@ -175,6 +179,14 @@ class Stage extends Container {
     }
 
     addTaskButtons() {
+        let textSyleTasks = {
+            fontFamily: "Verdana, Geneva, sans-serif",
+            fontWeight: "bold",
+            fontSize: '25px',
+            align: 'left',
+            fill: 'white'
+        };
+
         this.hud.addButtonContainer('task1', {
             spriteName: 'dieWhite1.png',
             spritesheet: this.spritesheet,
@@ -184,12 +196,7 @@ class Stage extends Container {
                 x: 0.5,
                 y: 0.5
             },
-            textStyle: {
-                fontFamily: 'Arial',
-                fontSize: '25px',
-                align: 'left',
-                fill: 'black'
-            }
+            textStyle: textSyleTasks 
         }, this.onTask1ButtonDown);
 
         this.hud.addButtonContainer('task2', {
@@ -201,12 +208,7 @@ class Stage extends Container {
                 x: 0.5,
                 y: 0.5
             },
-            textStyle: {
-                fontFamily: 'Arial',
-                fontSize: '25px',
-                align: 'left',
-                fill: 'black'
-            }
+            textStyle: textSyleTasks
         }, this.onTask2ButtonDown);
 
         this.hud.addButtonContainer('task3', {
@@ -218,12 +220,7 @@ class Stage extends Container {
                 x: 0.5,
                 y: 0.5
             },
-            textStyle: {
-                fontFamily: 'Arial',
-                fontSize: '25px',
-                align: 'left',
-                fill: 'black'
-            }
+            textStyle: textSyleTasks
         }, this.onTask3ButtonDown);
     }
 
@@ -353,8 +350,6 @@ class Stage extends Container {
 
         var graphics = new PIXI.Graphics();
 
-        graphics.lineStyle(2, 0x64b0ff, 1);
-        graphics.beginFill(0x383838, 1);
         graphics.drawRect(-1 * MAX_X * 0.35, -1 * MAX_Y * 0.4, MAX_X * 0.7, MAX_Y * 0.8);
         content.addChild(graphics);
 
