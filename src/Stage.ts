@@ -75,7 +75,7 @@ class Stage extends Container {
         this.addSpriteToReversedArray = this.addSpriteToReversedArray.bind(this)
         this.animate = this.animate.bind(this)
         this.tickTask2Timer = this.tickTask2Timer.bind(this)
-        
+
         this._initStage();
     }
 
@@ -267,6 +267,7 @@ class Stage extends Container {
 
             let sprite = new PIXI.Sprite(this.loader.resources[this.spritesheet].textures['card' + index + '.png']);
             sprite.position.set(150, 50 + spritePadding);
+            sprite.anchor.set(0.5, 0);
             spritePadding += 5; // add some padding
             this.sprites.push(sprite);
             this.spritePositions.push(sprite.position);
@@ -286,7 +287,7 @@ class Stage extends Container {
                 let card = new Card();
                 card.sprite = lastSprite;
                 card.startPosition = lastSprite.position;
-                card.expectedPosition = this.spritePositions[this.reversedSprites.length];
+                card.expectedPosition = new Point(MAX_X, this.spritePositions[this.reversedSprites.length].y);
                 card.moveDuration = 2 * 1000;
                 this.cardCollection.push(card);
 
@@ -317,7 +318,7 @@ class Stage extends Container {
     startTask2() {
         this.selectedTask = 2;
         this.randomContainerTimer = 0;
-        this.randomContainerDuration = (Math.random()+1) * 1000;
+        this.randomContainerDuration = (Math.random() + 1) * 1000;
 
         if (this.hud.randomContainer)
             this.hud.randomContainer.removeChildren(0);

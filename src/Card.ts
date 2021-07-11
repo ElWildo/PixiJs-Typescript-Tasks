@@ -59,11 +59,12 @@ class Card {
             let stepSize = this.moveDuration / elapsedTime;
 
             //card should move to the expectedPosition but added some x value for good visual effect
-            let resultX = (this.expectedPosition.x + 500 - this.startPosition.x);
+            let resultX = (this.expectedPosition.x - this.startPosition.x);
+
             if (resultX > 0)
                 this.sprite.position.x += resultX / stepSize;
 
-            let resultY = (this.expectedPosition.y - this.startPosition.y);
+            let resultY = (this.expectedPosition.y - this.sprite.width.height - this.startPosition.y);
             if (resultY > 0)
                 this.sprite.position.y += resultY / stepSize;
         }
