@@ -15,7 +15,7 @@ class Game {
      * @returns {Game}
      */
     constructor() {
-        this.spritesheet = '../assets/spritesheetcollection.json';
+        this.spritesheet = './assets/spritesheetcollection.json';
         this.loader = PIXI.Loader.shared;
         this.renderer = autoDetectRenderer(
             {
@@ -31,8 +31,8 @@ class Game {
 
     load() {
         this.loader
-            .add('fx_settings', '../assets/default-bundle.json')
-            .add('fx_spritesheet', '../assets/revoltfx-spritesheet.json')
+            .add('fx_settings', './assets/default-bundle.json')
+            .add('fx_spritesheet', './assets/revoltfx-spritesheet.json')
             .add(this.spritesheet)
             .load((loader, resources)=>{
                 document.body.appendChild(this.renderer.view);
