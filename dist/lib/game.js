@@ -11908,10 +11908,10 @@ var Card = /** @class */ (function () {
         if (elapsedTime > 0) {
             var stepSize = this.moveDuration / elapsedTime;
             //card should move to the expectedPosition but added some x value for good visual effect
-            var resultX = (this.expectedPosition.x - this.startPosition.x);
+            var resultX = (this.expectedPosition.x - this.sprite.width - 150);
             if (resultX > 0)
                 this.sprite.position.x += resultX / stepSize;
-            var resultY = (this.expectedPosition.y - this.sprite.width.height - this.startPosition.y);
+            var resultY = (this.expectedPosition.y - this.startPosition.y);
             if (resultY > 0)
                 this.sprite.position.y += resultY / stepSize;
         }
