@@ -356,7 +356,7 @@ class Stage extends Container {
 
         //add fire-arc fx from RevoltFX library
         //changed variables in assets/defult-bundle.json using the editor at https://editor.revoltfx.electronauts.net/
-        var emitter = this.fx.getParticleEmitter('fire-arc', true, true);
+        var emitter = this.fx.getParticleEmitter('top-flamethrower', true, true);
         emitter.settings.autoRotation = false;
         emitter.init(content);
     }

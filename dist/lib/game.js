@@ -6570,7 +6570,8 @@ var Stage = /** @class */ (function (_super) {
     Stage.prototype.startTask2 = function () {
         this.selectedTask = 2;
         this.randomContainerTimer = 0;
-        this.randomContainerDuration = (Math.random() + 1) * 1000;
+        // set duration at 2 seconds
+        this.randomContainerDuration = 2 * 1000;
         if (this.hud.randomContainer)
             this.hud.randomContainer.removeChildren(0);
         this.hud.addRandomContainer("random", {
@@ -6602,7 +6603,7 @@ var Stage = /** @class */ (function (_super) {
         content.addChild(graphics);
         //add fire-arc fx from RevoltFX library
         //changed variables in assets/defult-bundle.json using the editor at https://editor.revoltfx.electronauts.net/
-        var emitter = this.fx.getParticleEmitter('fire-arc', true, true);
+        var emitter = this.fx.getParticleEmitter('top-flamethrower', true, true);
         emitter.settings.autoRotation = false;
         emitter.init(content);
     };
@@ -6988,12 +6989,12 @@ var Hud = /** @class */ (function (_super) {
         this.addChild(container);
     };
     Hud.prototype.randomText = function () {
-        var capitalCityOfCountriesArray = ["Sukhumi", "Kabul", "Episkopi Cantonment", "Tirana", "Algiers", "Pago Pago", "Andorra la Vella", "Luanda", "The Valley", "St. John's", "Buenos Aires", "Yerevan", "Oranjestad", "Georgetown", "Canberra", "Vienna", "Baku", "Nassau", "Manama", "Dhaka", "Bridgetown", "Minsk", "Brussels", "Belmopan", "Porto-Novo", "Hamilton", "Thimphu", "Sucre", "La Paz", "Sarajevo", "Gaborone", "Brasília", "Road Town", "Bandar Seri Begawan", "Sofia", "Ouagadougou", "Bujumbura", "Phnom Penh", "Yaoundé", "Ottawa", "Praia", "George Town", "Bangui", "N'Djamena", "Santiago", "Beijing", "Flying Fish Cove", "West Island", "Bogotá", "Moroni", "Avarua", "San José", "Zagreb", "Havana", "Willemstad", "Nicosia", "Prague", "Yamoussoukro", "Kinshasa", "Copenhagen", "Djibouti", "Roseau", "Santo Domingo", "Dili", "Hanga Roa", "Quito", "Cairo", "San Salvador", "Malabo", "Asmara", "Tallinn", "Addis Ababa", "Stanley", "Tórshavn", "Palikir", "Suva", "Helsinki", "Paris", "Cayenne", "Papeete", "Libreville", "Banjul", "Tbilisi", "Berlin", "Accra", "Gibraltar", "Athens", "Nuuk", "St. George's", "Hagåtña", "Guatemala City", "St. Peter Port", "Conakry", "Bissau", "Georgetown", "Port-au-Prince", "Tegucigalpa", "Budapest", "Reykjavík", "New Delhi", "Jakarta", "Tehran", "Baghdad", "Dublin", "Douglas", "Jerusalem", "Rome", "Kingston", "Tokyo", "St. Helier", "Amman", "Astana", "Nairobi", "Tarawa", "Pristina", "Kuwait City", "Bishkek", "Vientiane", "Riga", "Beirut", "Maseru", "Monrovia", "Tripoli", "Vaduz", "Vilnius", "Luxembourg", "Skopje", "Antananarivo", "Lilongwe", "Kuala Lumpur", "Malé", "Bamako", "Valletta", "Majuro", "Nouakchott", "Port Louis", "Mexico City", "Chisinau", "Monaco", "Ulaanbaatar", "Podgorica", "Plymouth", "Rabat", "Maputo", "Naypyidaw", "Stepanakert", "Windhoek", "Yaren", "Kathmandu", "Amsterdam", "Nouméa", "Wellington", "Managua", "Niamey", "Abuja", "Alofi", "Kingston", "Pyongyang", "Nicosia", "Belfast", "Saipan", "Oslo", "Muscat", "Islamabad", "Ngerulmud", "Jerusalem", "Panama City", "Port Moresby", "Asunción", "Lima", "Manila", "Adamstown", "Warsaw", "Lisbon", "San Juan", "Doha", "Taipei", "Brazzaville", "Bucharest", "Moscow", "Kigali", "Gustavia", "Jamestown", "Basseterre", "Castries", "Marigot", "St. Pierre", "Kingstown", "Apia", "San Marino", "Riyadh", "Edinburgh", "Dakar", "Belgrade", "Victoria", "Freetown", "Singapore", "Philipsburg", "Bratislava", "Ljubljana", "Honiara", "Mogadishu", "Hargeisa", "Pretoria", "Grytviken", "Seoul", "Tskhinvali", "Juba", "Madrid", "Sri Jayawardenapura Kotte", "Khartoum", "Paramaribo", "Mbabane", "Stockholm", "Bern", "Damascus", "São Tomé", "Dushanbe", "Dodoma", "Bangkok", "Lomé", "Nuku'alofa", "Tiraspol", "Port of Spain", "Edinburgh of the Seven Seas", "Tunis", "Ankara", "Ashgabat", "Cockburn Town", "Funafuti", "Kampala", "Kiev", "Abu Dhabi", "London", "Washington, D.C.", "Charlotte Amalie", "Montevideo", "Tashkent", "Port Vila", "Vatican City", "Caracas", "Hanoi", "Cardiff", "Mata-Utu", "Laayoune", "San'a", "Lusaka", "Harare"];
-        var randomCapitalCityIndex = this.randomInt(0, capitalCityOfCountriesArray.length - 1);
+        var pokemon = ["Bulbasaur", "Ivysaur", "Venusaur", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Wartortle", "Blastoise", "Caterpie", "Metapod", "Butterfree", "Weedle", "Kakuna", "Beedrill", "Pidgey", "Pidgeotto", "Pidgeot", "Rattata", "Raticate", "Spearow", "Fearow", "Ekans", "Arbok", "Pikachu", "Raichu", "Sandshrew", "Sandslash", "Nidoran", "Nidorina", "Nidoqueen", "Nidoran", "Nidorino", "Nidoking", "Clefairy", "Clefable", "Vulpix", "Ninetales", "Jigglypuff", "Wigglytuff", "Zubat", "Golbat", "Oddish", "Gloom", "Vileplume", "Paras", "Parasect", "Venonat", "Venomoth", "Diglett", "Dugtrio", "Meowth", "Persian", "Psyduck", "Golduck", "Mankey", "Primeape", "Growlithe", "Arcanine", "Poliwag", "Poliwhirl", "Poliwrath", "Abra", "Kadabra", "Alakazam", "Machop", "Machoke", "Machamp", "Bellsprout", "Weepinbell", "Victreebel", "Tentacool", "Tentacruel", "Geodude", "Graveler", "Golem", "Ponyta", "Rapidash", "Slowpoke", "Slowbro", "Magnemite", "Magneton", "Farfetch'd", "Doduo", "Dodrio", "Seel", "Dewgong", "Grimer", "Muk", "Shellder", "Cloyster", "Gastly", "Haunter", "Gengar", "Onix", "Drowzee", "Hypno", "Krabby", "Kingler", "Voltorb", "Electrode", "Exeggcute", "Exeggutor", "Cubone", "Marowak", "Hitmonlee", "Hitmonchan", "Lickitung", "Koffing", "Weezing", "Rhyhorn", "Rhydon", "Chansey", "Tangela", "Kangaskhan", "Horsea", "Seadra", "Goldeen", "Seaking", "Staryu", "Starmie", "Mr. Mime", "Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir", "Tauros", "Magikarp", "Gyarados", "Lapras", "Ditto", "Eevee", "Vaporeon", "Jolteon", "Flareon", "Porygon", "Omanyte", "Omastar", "Kabuto", "Kabutops", "Aerodactyl", "Snorlax", "Articuno", "Zapdos", "Moltres", "Dratini", "Dragonair", "Dragonite", "Mewtwo", "Mew"];
+        var randomPokemonIndex = this.randomInt(0, pokemon.length - 1);
         var beginChars = ["{", "[", "|", "<"];
         var endChars = ["}", "]", "|", ">"];
         var randomCharIndex = this.randomInt(0, beginChars.length - 1);
-        return beginChars[randomCharIndex] + capitalCityOfCountriesArray[randomCapitalCityIndex] + endChars[randomCharIndex];
+        return beginChars[randomCharIndex] + pokemon[randomPokemonIndex] + endChars[randomCharIndex];
     };
     /**
      * randomInt - The helper function for creating random integer value includes min and max value
