@@ -243,9 +243,9 @@ class Stage extends Container {
     }
 
     removeAllTaskButtons() {
-        this.hud.removeChildren(0);
-        this.hud.removeChildren(0);
-        this.hud.removeChildren(0);
+        this.hud.task1Container.removeChildren(0);
+        this.hud.task2Container.removeChildren(0);
+        this.hud.task3Container.removeChildren(0);
     }
 
     startTask1() {
@@ -315,7 +315,8 @@ class Stage extends Container {
     startTask2() {
         this.selectedTask = 2;
         this.randomContainerTimer = 0;
-        this.randomContainerDuration = (Math.random() + 1) * 1000;
+        // set duration at 2 seconds
+        this.randomContainerDuration = 2 * 1000;
 
         if (this.hud.randomContainer)
             this.hud.randomContainer.removeChildren(0);

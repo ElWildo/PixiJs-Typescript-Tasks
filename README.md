@@ -8,6 +8,20 @@ Examples of tasks possible with Pixi.JS in combination with Typescript and Webpa
 2. Create a tool that will allow mixed text and images in an easy way (for example displaying text with emoticons or prices with money icon). It should come up every 2 seconds a random text with images in random configuration (image + text + image, image + image + image, image + image + text, text + image + text etc) and a random font size.
 3. Particles - make a demo that shows an awesome fire effect. Please keep number of images low (max 10 sprites on screen at once). Feel free to use existing libraries how you would use them in a real project.
 
+## Install
+
+- Clone the repository
+- `cd` into the folder
+- Run `npm i` to install depedencies
+- Uncomment .dit/lib in `.gitignore` if not planning to use it for github pages *(optional)* 
+## Commands
+- `npm run start`\
+ Start the webserver
+- `npm run build`\
+  Compile ts file and save the files in ./dist/lib\
+  Add minified version of pixi.js to ./dist/lib
+
+
 ## Working Link
 
 Working site is available at github page:\

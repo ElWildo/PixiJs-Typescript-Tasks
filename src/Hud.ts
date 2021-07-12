@@ -19,11 +19,13 @@ const HUD_POSITIONS = {
 
 class Hud extends Container {
     randomContainer: any;
-    task1Container: any;
     fpsTextBox: any;
     loader: any;
     parent: Stage;
+    task1Container: any;
     elementSupport: any;
+    task2Container: any;
+    task3Container: any;
 
     /**
      * Hud Constructor
