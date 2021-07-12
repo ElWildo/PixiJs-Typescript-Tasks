@@ -1771,7 +1771,7 @@
                         "gravity": 0,
                         "useFloor": false,
                         "floorY": 0,
-                        "rotation": 0,
+                        "rotation": 4.71238898038469,
                         "autoRotation": 0,
                         "particleSettings": {
                                 "componentType": 1,
@@ -7199,26 +7199,25 @@
                         "name": "fire-arc",
                         "type": 0,
                         "core": {
-                                "type": "circle",
+                                "type": "ring",
                                 "params": {
-                                        "radius": 150,
-                                        "angle": 120,
-                                        "rotation": "-90",
+                                        "radius": 250,
                                         "radial": true,
+                                        "angle": 3.490658503988659,
+                                        "uniform": false,
                                         "width": 100,
-                                        "height": 100,
-                                        "uniform": false
+                                        "height": 100
                                 }
                         },
                         "spawnFrequencyMin": 0.1,
                         "spawnFrequencyMax": 0.1,
                         "maxParticles": 1000,
                         "spawnCountMin": 7,
-                        "spawnCountMax": 25,
+                        "spawnCountMax": 20,
                         "duration": 0,
                         "infinite": true,
                         "useGravity": true,
-                        "gravity": -0.1,
+                        "gravity": 0.12,
                         "useFloor": true,
                         "floorY": 700,
                         "rotation": 0,
@@ -7324,9 +7323,8 @@
                                 "params": {
                                         "radius": 30,
                                         "radial": true,
-                                        "angle": 120,
+                                        "angle": 2.0943951023931953,
                                         "uniform": false,
-                                        "rotation": "-90",
                                         "width": 100,
                                         "height": 100
                                 }
@@ -7341,7 +7339,7 @@
                         "useGravity": true,
                         "gravity": 0.24,
                         "useFloor": true,
-                        "floorY": 350,
+                        "floorY": 700,
                         "rotation": 0,
                         "autoRotation": 0,
                         "particleSettings": {
@@ -7752,13 +7750,12 @@
                         "name": "fire-arc-sub2",
                         "type": 0,
                         "core": {
-                                "type": "circle",
+                                "type": "ring",
                                 "params": {
-                                        "radius": 100,
+                                        "radius": 250,
                                         "radial": true,
-                                        "angle": 90,
+                                        "angle": 3.490658503988659,
                                         "uniform": false,
-                                        "rotation": "-90",
                                         "width": 100,
                                         "height": 100
                                 }
@@ -7766,8 +7763,8 @@
                         "spawnFrequencyMin": 0.1,
                         "spawnFrequencyMax": 0.1,
                         "maxParticles": 1000,
-                        "spawnCountMin": 10,
-                        "spawnCountMax": 25,
+                        "spawnCountMin": 15,
+                        "spawnCountMax": 20,
                         "duration": 0,
                         "infinite": true,
                         "useGravity": false,
@@ -7775,7 +7772,7 @@
                         "useFloor": true,
                         "floorY": 700,
                         "rotation": 0,
-                        "autoRotation": 0,
+                        "autoRotation": 0.006981317007977318,
                         "particleSettings": {
                                 "componentType": 1,
                                 "componentId": "fx-explo2",
