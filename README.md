@@ -43,7 +43,7 @@ https://www.kenney.nl/assets/boardgame-pack
 https://www.codeandweb.com/texturepacker
 
 - RevoltFX\
-https://npm.devtool.tech/@siri4/revolt-fx\
+https://npm.devtool.tech/@siri4/revolt-fx \
 Fork of RevoltFX (MIT License) for Particle FX with pixiJs exluded\
 ( https://github.com/bma73/revolt-fx )
 
